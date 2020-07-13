@@ -52,8 +52,10 @@ export default {
 
       requestAnimationFrame(() => updateImage(frameIndex + 1))
     })
-
-    preloadImages()
+    window.addEventListener('load', function () {
+      console.log('loaded')
+      preloadImages()
+    })
   },
 }
 </script>
