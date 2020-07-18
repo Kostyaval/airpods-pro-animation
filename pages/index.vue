@@ -14,11 +14,11 @@ export default {
     const canvas = document.getElementById('hero-lightpass')
     const context = canvas.getContext('2d')
 
-    const frameCount = 147
+    const frameCount = 179
     const currentFrame = (index) =>
-      `https://www.apple.com/105/media/us/airpods-pro/2019/1299e2f5_9206_4470_b28e_08307a42f19b/anim/sequence/large/01-hero-lightpass/${index
+      `/Broxbe_responcive/Broxbe_responcive_${index
         .toString()
-        .padStart(4, '0')}.jpg`
+        .padStart(5, '0')}.jpg`
 
     const preloadImages = () => {
       for (let i = 1; i <= frameCount; i++) {
@@ -30,8 +30,8 @@ export default {
 
     const img = new Image()
     img.src = currentFrame(1)
-    canvas.width = 1158
-    canvas.height = 770
+    canvas.width = 1440
+    canvas.height = 900
     img.onload = function () {
       context.drawImage(img, 0, 0)
     }
@@ -52,10 +52,7 @@ export default {
 
       requestAnimationFrame(() => updateImage(frameIndex + 1))
     })
-    window.addEventListener('load', function () {
-      console.log('loaded')
-      preloadImages()
-    })
+    preloadImages()
   },
 }
 </script>
@@ -63,11 +60,13 @@ export default {
 <style>
 html {
   height: 100vh;
+  scroll-behavior: smooth;
 }
 
 body {
-  height: 200vh;
-  background: #000;
+  height: 600vh;
+  background: #fff;
+  scroll-behavior: smooth;
 }
 
 canvas {
