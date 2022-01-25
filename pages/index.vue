@@ -14,11 +14,9 @@ export default {
     const canvas = document.getElementById('hero-lightpass')
     const context = canvas.getContext('2d')
 
-    const frameCount = 179
+    const frameCount = 466
     const currentFrame = (index) =>
-      `/Broxbe_responcive/Broxbe_responcive_${index
-        .toString()
-        .padStart(5, '0')}.jpg`
+      `/platform-360/Video-01_${index.toString().padStart(5, '0')}.jpg`
 
     const preloadImages = () => {
       for (let i = 1; i <= frameCount; i++) {
@@ -30,15 +28,25 @@ export default {
 
     const img = new Image()
     img.src = currentFrame(1)
-    canvas.width = 1440
-    canvas.height = 900
+    canvas.width = 1920
+    canvas.height = 1200
     img.onload = function () {
       context.drawImage(img, 0, 0)
     }
 
     const updateImage = (index) => {
-      console.log(index, this.images[index])
-      context.drawImage(this.images[index], 0, 0)
+      // const cof = `1.${index}`
+
+      // console.log(index, this.images[index])
+      context.drawImage(this.images[index], 1, 1)
+      // const scale = Math.min(
+      //   canvas.width / this.images[index].width,
+      //   canvas.height / this.images[index].height
+      // )
+      // console.log(cof)
+      // const w = this.images[index].width * scale * parseFloat(cof)
+      // const h = this.images[index].height * scale * parseFloat(cof)
+      // console.log(w, h)
     }
 
     window.addEventListener('scroll', () => {
@@ -49,6 +57,7 @@ export default {
         frameCount - 1,
         Math.ceil(scrollFraction * frameCount)
       )
+      console.log(scrollFraction)
 
       requestAnimationFrame(() => updateImage(frameIndex + 1))
     })
@@ -64,8 +73,8 @@ html {
 }
 
 body {
-  height: 600vh;
-  background: #fff;
+  height: 1800vh;
+  background: #333333;
   scroll-behavior: smooth;
 }
 
